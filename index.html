@@ -1,0 +1,37 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<script>
+function getMobileOperatingSystem() {
+    var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
+    // Windows Phone must come first because its UA also contains "Android"
+    // if (/windows phone/i.test(userAgent)) {
+    //     // Simulate an HTTP redirect:
+    //     window.location.replace("https://www.google.com/search?q=windows+phone");
+    //     return "Windows Phone";
+    // }else 
+    if (/android/i.test(userAgent)) {
+        window.location.replace("https://play.google.com/store/apps/details?id=com.approach.approachapp.prod&hl=en_AU");
+        return "Android";
+    } else if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+        // iOS detection from: http://stackoverflow.com/a/9039885/177710
+        window.location.replace("https://apple.co/3mWibIc");
+        return "iOS";
+    }else {
+        window.location.replace("https://approach-app.com.au/");
+        return "Browser";
+    }
+}
+</script>
+</head>
+<body onload="getMobileOperatingSystem()">
+
+<p id="demo">A Paragraph.</p>
+
+
+
+</body>
+</html> 
+
